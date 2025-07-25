@@ -1,7 +1,8 @@
 export default async function handler(req, res) {
   // Extract the path and query from the request
   const { method, url } = req;
-  const apiPath = url.replace(/^\/api\/scratch/, '');
+  const apiPath = url.replace(/^\/projects\/1159822855/, '');
+  //https://api.scratch.mit.edu/projects/1159822855
 
   // Build the target Scratch API URL
   const scratchApiUrl = `https://api.scratch.mit.edu${apiPath}`;
