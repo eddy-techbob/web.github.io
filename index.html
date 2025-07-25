@@ -5,13 +5,20 @@
 </head>
 <body>
   <h1>Welcome, Chun 👋</h1>
-  <button onclick="sayHello()">Click Me!</button>
-  <p id="message"></p>
+  <!--button onclick="sayHello()">Click Me!</button>
+  <p id="message"></p-->
 
   <script>
-    function sayHello() {
-      document.getElementById("message").innerText = "Hello! You clicked the button 🚀";
-    }
+    const projectId = 1159822855; // Replace with your project ID
+fetch(`https://api.scratch.mit.edu/projects/${projectId}`)
+  .then(response => response.json())
+  .then(data => {
+    console.log("Project Title:", data.title);
+    console.log("Author:", data.author.username);
+    console.log("Instructions:", data.instructions);
+  })
+  .catch(error => console.error("Error fetching project:", error));
+
   </script>
 </body>
 </html>
