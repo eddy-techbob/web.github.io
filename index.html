@@ -7,17 +7,19 @@
   <h1>Welcome, Chun 👋</h1>
   <!--button onclick="sayHello()">Click Me!</button>
   <p id="message"></p-->
-
+ 
   <script>
-    const projectId = 1159822855; // Replace with your project ID
-fetch(`https://api.scratch.mit.edu/projects/${projectId}`)
-  .then(response => response.json())
-  .then(data => {
-    console.log("Project Title:", data.title);
-    console.log("Author:", data.author.username);
-    console.log("Instructions:", data.instructions);
+  fetch("https://your-vercel-project.vercel.app/api/proxy", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    url: "https://api.scratch.mit.edu/projects/1159822855",
+    method: "GET"
   })
-  .catch(error => console.error("Error fetching project:", error));
+})
+.then(res => res.json())
+.then(data => console.log(data));
+
 
   </script>
 </body>
