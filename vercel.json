@@ -1,8 +1,5 @@
 {
   "rewrites": [
-    {
-      "source": "/scratch/:path*",
-      "destination": "/api/scratch"
-    }
+    { "source": "/scratch/(.*)", "destination": "/api/scratch/$1" }
   ]
 }

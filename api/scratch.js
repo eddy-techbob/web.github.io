@@ -1,18 +1,27 @@
-export default async (req, res) => {
-  const { path = "", method = "GET", headers = {}, body } = req.body;
+export default async function handler(req, res) {
+  // Extract the path and query from the request
+  const { method, url } = req;
+  const apiPath = url.replace(/^\/api\/scratch/, '');
 
-  const scratchApiUrl = `https://api.scratch.mit.edu/${path}`;
+  // Build the target Scratch API URL
+  const scratchApiUrl = `https://api.scratch.mit.edu${apiPath}`;
 
-  try {
-    const response = await fetch(scratchApiUrl, {
-      method,
-      headers,
-      body: method !== "GET" ? JSON.stringify(body) : undefined,
-    });
+  // Forward the request to Scratch API
+  const apiRes = await fetch(scratchApiUrl, {
+    method,
+    headers: {
+      ...req.headers,
+      host: 'api.scratch.mit.edu'
+    }
+  });
 
-    const data = await response.json();
-    res.status(response.status).json(data);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
+  // Set the returned headers and status
+  res.status(apiRes.status);
+  apiRes.headers.forEach((value, key) => {
+    res.setHeader(key, value);
+  });
+
+  // Pipe the API response to the client
+  const data = await apiRes.text();
+  res.send(data);
+}

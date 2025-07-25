@@ -9,11 +9,11 @@
   <p id="message"></p-->
  
   <script>
-  //scratch.mit.edu/projects/1159822855  
-  fetch("https://web-github-io-omega.vercel.app/scratch/users/eddychungtechbob", {
+  //https://scratch.mit.edu/projects/1159822855
+  fetch("https://<your-vercel-project>.vercel.app/api/scratch/projects/1159822855", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ path: "users/eddychungtechbob", method: "GET" })
+  body: JSON.stringify({ path: "users/griffpatch", method: "GET" })
 })
 .then(res => res.json())
 .then(data => console.log(data));
