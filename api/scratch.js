@@ -25,4 +25,5 @@ const apiPath = url.replace(/^\/api/, '');
   // Pipe the API response to the client
   const data = await apiRes.text();
   res.send(data);
+  console.log(data);
 }
