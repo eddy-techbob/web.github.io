@@ -16,6 +16,9 @@ const apiPath = url.replace(/^\/api/, '');
     }
   });
 
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   // Set the returned headers and status
   res.status(apiRes.status);
   apiRes.headers.forEach((value, key) => {
