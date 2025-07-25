@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<meta charset="UTF-8">
-<title>Page Title</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="">
-<style>
-html,body {font-family:"Verdana",sans-serif}
-h1,h2,h3,h4,h5,h6 {font-family:"Segoe UI",sans-serif}
-</style>
-<script src=""></script>
+<html>
+<head>
+  <title>Hello from JavaScript!</title>
+</head>
 <body>
-<h1>I have changed something...</h1>
-<p>This is a paragraph.</p>
-<p>This is a another paragraph.</p>
+  <h1>Welcome, Chun 👋</h1>
+  <button onclick="sayHello()">Click Me!</button>
+  <p id="message"></p>
 
+  <script>
+    function sayHello() {
+      document.getElementById("message").innerText = "Hello! You clicked the button 🚀";
+    }
+  </script>
 </body>
 </html>
