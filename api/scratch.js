@@ -1,9 +1,10 @@
-// api/proxy.js
 export default async (req, res) => {
-  const { url, method = "GET", headers = {}, body } = req.body;
+  const { path = "", method = "GET", headers = {}, body } = req.body;
+
+  const scratchApiUrl = `https://api.scratch.mit.edu/${path}`;
 
   try {
-    const response = await fetch(url, {
+    const response = await fetch(scratchApiUrl, {
       method,
       headers,
       body: method !== "GET" ? JSON.stringify(body) : undefined,
